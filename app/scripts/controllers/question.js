@@ -8,14 +8,40 @@
  * Controller of the myAppApp
  */
 angular.module('myAppApp')
-  .controller('QuestionCtrl', function ($interval, $http, $scope, $rootScope, $filter,$window) {
+  .controller('QuestionCtrl', function ($interval, $http, $scope, $rootScope, $filter,$window,$timeout) {
 if(localStorage.getItem("quiz-token")){
   $rootScope.login=true;
   }
   else{
     $rootScope.login=false;
   }
+  active();
+  $scope.counter = 0;
+  var stopped;
 
+   $scope.timerRunning = false;
+
+  //timeout function
+  //1000 milliseconds = 1 second
+  //Every second counts
+  //Cancels a task associated with the promise. As a result of this, the //promise will be resolved with a rejection.
+  function active() {
+      $scope.timerRunning = true;
+      stopped = $timeout(function() {
+         //console.log($scope.counter);
+       $scope.counter++;
+       active();
+      }, 1000);
+    };
+
+
+  // $scope.stop = function(){
+  //
+  // };
+
+  $scope.teste = function(){
+          console.log($scope.counter);
+      };
 
       $scope.answered=false;
       $rootScope.grade = 0 ;
@@ -40,6 +66,8 @@ if(localStorage.getItem("quiz-token")){
 
       $scope.data=[];
       $scope.submit = function(){
+        $scope.timerRunning = false;
+        $timeout.cancel(stopped);
       $rootScope.grade = 0 ;
       $scope.answered=true;
       $scope.initQues = $filter('orderBy')($scope.questions, 'id');
