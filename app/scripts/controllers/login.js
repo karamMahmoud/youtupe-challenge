@@ -8,7 +8,7 @@
  * Controller of the myAppApp
  */
 angular.module('myAppApp')
-  .controller('loginCtrl', function($scope, $http,$location,$rootScope,$mdDialog) {
+  .controller('loginCtrl', function($scope, $http,$location,$rootScope,$mdDialog,ngDialog) {
     if(localStorage.getItem("quiz-token")){
       $rootScope.login=true;
       }
@@ -19,6 +19,7 @@ angular.module('myAppApp')
       email: '',
       password: ''
     };
+    var flag=0;
     $scope.signIn = function() {
       $http.get('dummy-data/users.json').then(function(response) {
         $scope.data = response.data.users;
@@ -38,10 +39,14 @@ angular.module('myAppApp')
               var index=password+1;
                localStorage.setItem("quiz-token",$scope.data['user'+index].token);
                $location.path('/');
+               flag=1;
               //  console.log($scope.data['user'+password].token);
             }
           }
         }
+      }
+      if(!flag){
+        ngDialog.open({ template: '<p style="color:	#A52A2A; font-size:18px;height:20px">YOUR EMAIL OR PASSWORD NOT CORRECT</p>', plain: true });
       }
         });
     };
