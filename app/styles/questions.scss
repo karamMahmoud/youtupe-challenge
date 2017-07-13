@@ -1,0 +1,128 @@
+@import 'main.scss';
+.question-q{
+    font-family: $main-font;
+    font-size: 16px;
+    font-weight: 600;
+    color: #455358;
+    md-radio-button{
+        font-weight: 100;
+    }
+}
+
+.question-div{
+    box-shadow: 0 0.3125rem 1rem 0 rgba(0,0,0,0.24);
+    background-color: white;
+    width: 50%;
+    margin: 50px auto;
+    form{
+        padding:50px;
+    }
+}
+
+.question-container{
+    background-color: white;
+    display: inline-flex;
+}
+
+.submit-answer-btn{
+    font-family: $main-font;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    background-color: $dark-blue;
+    color: white;
+    font-size:20px;
+    box-shadow: 0 0.3125rem 1rem 0 $dark-blue;
+    border:none;
+    &:hover{
+        background-color: $main;
+    }
+}
+
+.answer-title{
+    font-size: 11px;
+    color: $dark-blue;
+}
+
+.correct-answer{
+    color:green;
+}
+.incorrect-answer{
+    color: red;
+}
+.no-answer{
+    color:orange;
+}
+
+.quiz-container{
+    box-shadow: 0 0.3125rem 1rem 0 rgba(66,87,178,0.84);
+    background-color: white;
+    width: 16%;
+    padding-top: 36px;
+    text-align: center;
+    h2{
+        color:$dark-blue;
+        font-size: 45px;
+        font-weight: 600; 
+        i{
+            font-size: 26px;
+            padding-right: 11px;
+        }
+    }
+    .timer{
+            color: #ff7473;
+            font-size: 23px;
+            padding-top: 26px;
+    }
+    .grade{
+        padding-top: 65px;
+        span{
+            color:$main2;
+            font-size: 75px;
+            font-weight: 600;
+            font-family: $main-font;
+        }
+        h3{
+            color:$dark-blue;
+            font-size: 38px;
+            margin-top: -8px;
+            font-family: $fjalla-font;
+        }
+    }
+}
+
+
+@media screen and (max-width: 940px){
+    .question-container{
+        display: block;
+    }
+
+    .question-div {
+         width: 85%;
+    }
+
+    .quiz-container{
+        padding-top: 1px;
+        text-align: center;
+        display: flex;
+        width: 100%;
+        h2 {
+            font-size: 39px;
+            padding-left: 33px;
+        }
+        .grade{
+            padding-top: 0;
+            margin: 0 25%;
+            span{
+                font-size: 70px;
+            }
+            h3{
+                font-size: 30px;
+            }
+        }
+        .timer{
+            padding-left: 33px;
+            padding-top: 0;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<div class="question-container">
+    <div class="quiz-container">
+        <div class="timer-wrapper">
+        <h2><i class="fa fa-file-text" aria-hidden="true"></i>Quiz</h2>
+    
+    </div>
+    <div class="grade" ng-if="answered">
+        <span>{{grade}}%</span>
+        <h3>GRADE</h3>
+    </div>
+    </div>
+    <div class="question-div">
+    <form ng-submit="submit()"  ng-cloak >
+        <md-radio-group class="question-q" ng-model="data[question.id]"  ng-repeat="question in questions">
+        <p><span>{{$index+1}} - {{ question.question }}</span> </p>
+        <div ng-if="!answered">
+            <md-radio-button name="uanswer"value="a">{{question.a}}</md-radio-button>
+            <md-radio-button name="uanswer"value="b">{{question.b}}</md-radio-button>
+            <md-radio-button name="uanswer"value="c">{{question.c}}</md-radio-button>
+            <md-radio-button name="uanswer"value="d">{{question.d}}</md-radio-button>
+        </div>
+        <div ng-if="answered">
+            <div class="question-answer" ng-if="question.answer==data[question.id]">
+                <span class="answer-title">CORRECT</span>
+                <br>
+                <span class="correct-answer"><i class="fa fa-check" aria-hidden="true"></i> {{question[question.answer]}}</span>
+            </div>
+            <div class="question-answer" ng-if="question.answer!=data[question.id]">
+                <span class="answer-title" >INCORRECT</span>
+                <br>
+                <span class="incorrect-answer" ng-if="data[question.id]"><i class="fa fa-times" aria-hidden="true"></i> {{question[data[question.id]]}}</span>
+                <span class="no-answer" ng-if="!data[question.id]">No answer given</span>
+                <br>
+                <span class="answer-title">THE ANSWER</span>
+                <br>
+                <span>{{question[question.answer]}}</span>
+            </div>
+        </div>
+        <hr>
+        </md-radio-group>
+        <div class="new-test-btn"  ng-if="answered">
+            <button ng-click="newTest()" class="submit-answer-btn">Create New Test</button>
+        </div>
+        <div class="new-test-btn"  ng-if="!answered">
+            <input type="submit" value="Check Answers" class="submit-answer-btn">
+        </div>
+    </form>
+    </div>
+</div>

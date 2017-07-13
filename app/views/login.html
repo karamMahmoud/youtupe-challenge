@@ -1,0 +1,30 @@
+<md-card-content layout="column" layout-align="center center" class="login mb50">
+    <div layout="row" class="pt30 box gBack">
+      <p class="box__title">
+        MEMBER LOGIN
+      </p>
+    </div>
+    <div layout="row" class="mt20">
+      <md-input-container class="login__input">
+        <label class="txtGrey">Email</label>
+        <input ng-model="credential.email" name="title" type="text" required>
+        <div ng-messages="project1.title.$error">
+          <div ng-message="required" role="alert">required field!</div>
+        </div>
+      </md-input-container>
+    </div>
+    <div layout="row" class="pb10">
+      <md-input-container class="login__input mt40">
+        <label class="txtGrey">Password</label>
+        <input ng-model="credential.password" name="City" type="text" required>
+        <div ng-messages="project1.title.$error">
+          <div ng-message="required" role="alert">required field!</div>
+        </div>
+      </md-input-container>
+    </div>
+    <button layout="row" class="pt30 box box--halfwidth  gBack" ng-click="signIn()">
+      <p class="box__title">
+        LOGIN
+      </p>
+    </button>
+</md-card-content>
