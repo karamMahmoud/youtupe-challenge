@@ -29,18 +29,7 @@ angular
                 controller: 'MainCtrl',
                 controllerAs: 'main'
             })
-            .when('/login', {
-                templateUrl: 'views/login.html',
-                controller: 'loginCtrl',
-                controllerAs: 'login'
-            })
-            .when('/questions', {
-                templateUrl: 'views/questions.html',
-                controller: 'QuestionCtrl',
-                controllerAs: 'question'
-            })
             .otherwise({
                 redirectTo: '/'
             });
         // $authProvide.login=""
-    });
